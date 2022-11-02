@@ -1,30 +1,23 @@
+// Function Declaration
+
 function goodMorning() {
     console.log('Good morning!')
 }
 
-function goodAfternoon() {
+goodMorning();
+
+// Function Expression
+
+const goodAfternoon = function() {
     console.log('Good afternoon!')
 }
 
-function execute(fn) {
-    fn();
+goodAfternoon();
+
+
+function sum(a, b) {
+    return a + b;
 }
 
-execute(goodMorning);
-execute(goodAfternoon);
-
-// Return a function from another function
-
-function pow(base) {
-    return function(exp) {
-        return Math.pow(base, exp);
-    }
-}
-
-const powerOfTwo = pow(2);
-console.log(powerOfTwo(8));
-
-//  or
-
-const powerOfThree = pow(3)(4);
-console.log(powerOfThree);
+const result = sum(10, 10);
+console.log(result);

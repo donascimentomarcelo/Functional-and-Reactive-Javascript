@@ -1,29 +1,30 @@
-// Arrow Function
+function goodMorning() {
+    console.log('Good morning!')
+}
 
-const hey = () => console.log('Hey!');
-hey();
+function goodAfternoon() {
+    console.log('Good afternoon!')
+}
 
-const greetings = name => `Hey ${name}!`;
-console.log(greetings('Crane'));
+function execute(fn) {
+    fn();
+}
 
-const sum = (...numbers) => {
-    let total = 0;
-    for (const n of numbers) {
-        total += n;
+execute(goodMorning);
+execute(goodAfternoon);
+
+// Return a function from another function
+
+function pow(base) {
+    return function(exp) {
+        return Math.pow(base, exp);
     }
-    return total;
 }
 
-console.log(sum(1,2,3));
-console.log(sum(1,2,3,4,5,6));
-console.log(sum(20,30,40));
+const powerOfTwo = pow(2);
+console.log(powerOfTwo(8));
 
-// this
+//  or
 
-Array.prototype.lastElement = function() {
-    console.log(this[this.length - 1]);
-}
-
-const numbers = [1,2,3,500];
-numbers.lastElement();
-
+const powerOfThree = pow(3)(4);
+console.log(powerOfThree);
