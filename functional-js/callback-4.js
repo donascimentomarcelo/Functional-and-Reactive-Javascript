@@ -9,6 +9,21 @@ const getName = item => item.name;
 
 const result = cart
     .filter(qtdHigherThanZero)
-    .map(getName)
+    .map(getName);
 
 console.log(result);
+
+Array.prototype.customFilter = function(fn) {
+    const newArray = [];
+    for (let i = 0; i < this.length; i++) {
+        if (fn(this[i]))
+            newArray.push(this[i]);
+    }
+    return newArray;
+}
+
+console.log(
+    cart
+    .customFilter(qtdHigherThanZero)
+    .map(getName)
+)
