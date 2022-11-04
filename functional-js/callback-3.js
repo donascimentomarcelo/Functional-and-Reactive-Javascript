@@ -14,3 +14,12 @@ console.log(cart.map(getName));
 const sum = item => item.qtd * item.price;
 console.log(cart.map(sum));
 
+Array.prototype.customMap = function(fn) {
+    const newArray = [];
+    for (let i = 0; i < this.length; i++)
+        newArray.push(fn(this[i], i, this));
+    return newArray;
+}
+
+const customSum = item => item.qtd * item.price;
+console.log(cart.customMap(customSum));
