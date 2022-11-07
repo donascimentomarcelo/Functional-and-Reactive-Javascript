@@ -12,3 +12,21 @@ const total = cart
     .reduce(sum);
 
 console.log(total);
+
+Array.prototype.customReduce = function(fn, initial) {
+    let acc = initial;
+    for (let i = 0; i < this.length; i++) {
+        if (!acc && i === 0) {
+            acc = this[i];
+            continue;
+        }
+        acc = fn(acc, this[i], i, this);
+    }
+    return acc;
+}
+
+const customTotal = cart
+    .map(getTotal)
+    .customReduce(sum);
+
+console.log(customTotal);
