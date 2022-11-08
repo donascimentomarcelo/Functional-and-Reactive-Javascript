@@ -9,4 +9,4 @@ const generateNumbersBetween = (min, max) => {
 }
 
 generateNumbersBetween(10, 20)
-    .then(console.log)
+    .then(console.log);
