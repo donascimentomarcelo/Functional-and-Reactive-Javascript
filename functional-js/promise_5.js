@@ -8,7 +8,6 @@ const worksOrNot = (value, errorChance) => {
     })
 }
 
-
 worksOrNot('testing...', 50)
     .then(console.log)
     .catch(console.log);
