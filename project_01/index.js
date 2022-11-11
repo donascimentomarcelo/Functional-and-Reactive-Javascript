@@ -3,5 +3,6 @@ const fn = require('./functions');
 
 const subtitlesPath = path.join(__dirname, '..', 'data', 'subtitles');
 
-const files = fn.readDir(subtitlesPath);
-console.log(files);
+const promise = fn.readDir(subtitlesPath);
+
+promise.then(console.log);
