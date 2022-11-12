@@ -28,14 +28,48 @@ function readFiles(paths) {
     return Promise.all(paths.map(path => readFile(path)));
 }
 
-function elementsEndingWith(array, pattern) {
-    return array.filter(el => el.endsWith(pattern));
+function elementsEndingWith(textualPattern) {
+    return function (array) {
+        return array.filter(el => el.endsWith(textualPattern));
+    }
 }
 
+function removeElementsEmptyLine(array) {
+    return array.filter(el => el.trim());
+}
+
+function removeElementsIfIncludes(textualPattern) {
+    return function (array) {
+        return array.filter(el => !el.includes(textualPattern));
+    }
+}
+
+function removeElementsIfIsNumber(array) {
+    return array.filter(el => {
+        const num = parseInt(el.trim());
+        return num !== num;
+    });
+}
+
+function removeSimbols(simbols) {
+    return function (array) {
+        return array.map(el => {
+            let textWithoutSimbols = el;
+            simbols.forEach(simbol => {
+                textWithoutSimbols = textWithoutSimbols.split(simbol).join('')
+            });
+            return textWithoutSimbols;
+        });
+    }
+}
 
 module.exports = {
     readDir,
     elementsEndingWith,
     readFiles,
-    readFile
+    readFile,
+    removeElementsEmptyLine,
+    removeElementsIfIncludes,
+    removeElementsIfIsNumber,
+    removeSimbols,
 }
