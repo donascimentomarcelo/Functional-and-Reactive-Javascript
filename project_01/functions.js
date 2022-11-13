@@ -4,9 +4,9 @@ const path = require('path')
 function readDir(subtitlesPath) {
     return new Promise((resolve, reject) => {
         try {
-            let files = fs.readdirSync(subtitlesPath);
-            files = files.map(file => path.join(subtitlesPath, file));
-            resolve(files);
+            const files = fs.readdirSync(subtitlesPath);
+            const fullFiles = files.map(file => path.join(subtitlesPath, file));
+            resolve(fullFiles);
         } catch (e) {
             reject(e);
         }
@@ -54,11 +54,9 @@ function removeElementsIfIsNumber(array) {
 function removeSimbols(simbols) {
     return function (array) {
         return array.map(el => {
-            let textWithoutSimbols = el;
-            simbols.forEach(simbol => {
-                textWithoutSimbols = textWithoutSimbols.split(simbol).join('')
-            });
-            return textWithoutSimbols;
+            return simbols.reduce((acc, simbol) => {
+                return acc.split(simbol).join('')
+            }, el)
         });
     }
 }
