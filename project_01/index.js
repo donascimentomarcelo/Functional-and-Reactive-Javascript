@@ -25,4 +25,5 @@ promise
     .then(fn.removeElementsEmptyLine)
     .then(fn.removeElementsIfIsNumber)
     .then(fn.agroupWords)
+    .then(fn.orderByNumericAttr('qtd', 'desc'))
     .then(console.log);

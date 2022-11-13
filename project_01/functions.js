@@ -83,6 +83,14 @@ function agroupWords(words) {
     }, {}));
 }
 
+function orderByNumericAttr(attr, order = 'asc') {
+    return function (array) {
+        const asc = (o1, o2) => o1[attr] - o2[attr];
+        const desc = (o1, o2) => o2[attr] - o1[attr];
+        return array.sort(order === 'asc' ? asc : desc);
+    }
+}
+
 module.exports = {
     readDir,
     elementsEndingWith,
@@ -95,4 +103,5 @@ module.exports = {
     mergeElements,
     splitTextBy,
     agroupWords,
+    orderByNumericAttr,
 }
