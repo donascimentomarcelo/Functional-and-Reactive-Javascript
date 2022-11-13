@@ -63,6 +63,17 @@ function removeSimbols(simbols) {
     }
 }
 
+function mergeElements(array) {
+    return array.join(' ');
+}
+
+
+function splitTextBy(simbol) {
+    return function(text) {
+        return text.split(simbol);
+    }
+}
+
 module.exports = {
     readDir,
     elementsEndingWith,
@@ -72,4 +83,6 @@ module.exports = {
     removeElementsIfIncludes,
     removeElementsIfIsNumber,
     removeSimbols,
+    mergeElements,
+    splitTextBy,
 }
