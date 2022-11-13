@@ -9,7 +9,7 @@ const simbols = [
     '.', '?', '-', ',', '!', '♪',
     '_', '<i>', '</i>', '\r', '[', ']',
     '(', ')',
-]
+];
 
 promise
     .then(fn.elementsEndingWith('.srt'))
@@ -23,4 +23,6 @@ promise
     .then(fn.mergeElements)
     .then(fn.splitTextBy(' '))
     .then(fn.removeElementsEmptyLine)
+    .then(fn.removeElementsIfIsNumber)
+    .then(fn.agroupWords)
     .then(console.log);

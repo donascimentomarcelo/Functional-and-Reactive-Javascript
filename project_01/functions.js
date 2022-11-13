@@ -69,9 +69,18 @@ function mergeElements(array) {
 
 
 function splitTextBy(simbol) {
-    return function(text) {
+    return function (text) {
         return text.split(simbol);
     }
+}
+
+function agroupWords(words) {
+    return Object.values(words.reduce((acc, item) => {
+        const word = item.toLowerCase();
+        const qtd = acc[word] ? acc[word].qtd + 1 : 1;
+        acc[word] = { word, qtd };
+        return acc;
+    }, {}));
 }
 
 module.exports = {
@@ -85,4 +94,5 @@ module.exports = {
     removeSimbols,
     mergeElements,
     splitTextBy,
+    agroupWords,
 }
