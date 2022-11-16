@@ -1,7 +1,10 @@
 /**
  * Todas as funções recebem apenas 1 parametro
  * Todas as funções retornam funções que recebem
- * apenas 1 parametro
+ * apenas 1 parâmetro
+ * 
+ * O código só é processado de fato qnd eu passo
+ * o último parâmetro no método validateProduct()
  */
 
 function textWithSizeBetween(min) {
