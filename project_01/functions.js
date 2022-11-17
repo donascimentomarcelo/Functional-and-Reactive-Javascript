@@ -1,6 +1,15 @@
 const fs = require('fs');
 const path = require('path')
 
+function composition(...fns) {
+    return (value) =>
+        fns.reduce(async (acc, fn) => {
+            if (Promise.resolve(acc) === acc)
+                return fn(await acc);
+            return fn(acc);
+        }, value);
+}
+
 function readDir(subtitlesPath) {
     return new Promise((resolve, reject) => {
         try {
@@ -90,6 +99,7 @@ function orderByNumericAttr(attr, order = 'asc') {
 }
 
 module.exports = {
+    composition,
     readDir,
     elementsEndingWith,
     readFiles,
