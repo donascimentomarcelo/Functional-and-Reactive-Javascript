@@ -23,6 +23,9 @@ function SafeType(value) {
 
             const newValue = fn(this.value);
             return SafeType(newValue);
+        },
+        flatMap(fn) {
+            return this.map(fn).value;
         }
     }
 }
@@ -41,3 +44,11 @@ const nullResult = SafeType('It is a text')
     .map(text => text.split('').join(' '));
 
 console.log(nullResult.value);
+
+
+const flatMapResult = SafeType('It is a text')
+    .map(text => text.toUpperCase())
+    .map(text => `${text}!!!`)
+    .flatMap(text => text.split('').join(' '));
+
+console.log(flatMapResult);
