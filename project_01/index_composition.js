@@ -9,7 +9,7 @@ const simbols = [
     '(', ')',
 ];
 
-fn.composition(
+const mostUsedWords = fn.composition(
     fn.readDir,
     fn.elementsEndingWith('.srt'),
     fn.readFiles,
@@ -26,4 +26,7 @@ fn.composition(
     fn.agroupWords,
     fn.orderByNumericAttr('qtd', 'desc',),
     console.log,
-)(subtitlesPath);
+);
+
+mostUsedWords(subtitlesPath)
+    .then(console.log);
