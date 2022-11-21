@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/donascimentomarcelo/Functional-and-Reactive-Javascript#readme",
   "dependencies": {
-    "rxjs": "^7.5.7"
+    "rxjs": "6.0.0",
+    "xmlhttprequest": "^1.8.0"
   }
 }
